@@ -1,151 +1,144 @@
 <!DOCTYPE html>
 <html ng-app="todoApp">
-    <head>
-        <meta charset="utf-8">
-        <script src="js/jquery-2.2.3.min.js"></script>
-        <script src="js/angular.min.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <!-- Video -->
-            <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
 
+<head>
+    <meta charset="utf-8">
+    <script src="js/jquery-2.2.3.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Video -->
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
-
     <!-- ionic/angularjs js -->
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
-
+    <script src="lib/ionic/js/ionic.bundle.min.js"></script>
     <!-- cordova script (this will be a 404 during development) -->
-        <script src="cordova.js"></script>
-        <script src="js/ng-cordova.min.js"></script>
-        <script src="js/jquery.vide.js"></script>
-        <!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="/css/materialize.min.css">
-        <!-- /////////////////////// -->
-        <link rel="stylesheet" href="/css/styles.css">
-        <!-- ///////////////////////////  -->
-        <link rel="stylesheet" href="/css/animate.css">
-        <!-- Icon google materialize -->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!-- Compiled and minified JavaScript -->
-        <script src="/js/materialize.min.js"></script>
-        <script src="/js/angular-materialize.js"></script>
-        <script src="/js/index.js"></script>
-        <script src="/js/app.js"></script>
-        
-        <title></title>
-        <script src="/js/wow.min.js"></script>
-        <script>
-            new WOW().init();
-        </script>
-        <style media="screen">
-            .text {
-                display: inline-block;
-                width: 180px;
-                white-space: nowrap;
-                overflow: hidden !important;
-                text-overflow: ellipsis;
-            }
+    <script src="cordova.js"></script>
+    <script src="js/ng-cordova.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="/css/materialize.min.css">
+    <!-- /////////////////////// -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <!-- ///////////////////////////  -->
+    <link rel="stylesheet" href="/css/animate.css">
+    <!-- Icon google materialize -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified JavaScript -->
+    <script src="/js/materialize.min.js"></script>
+    <script src="/js/angular-materialize.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="/js/app.js"></script>
+    <title></title>
+    <script src="/js/wow.min.js"></script>
+    <script>
+    new WOW().init();
+    </script>
+    <style media="screen">
+    .text {
+        display: inline-block;
+        width: 180px;
+        white-space: nowrap;
+        overflow: hidden !important;
+        text-overflow: ellipsis;
+    }
+    
+    body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+    }
+    
+    main {
+        flex: 1 0 auto;
+    }
+    </style>
+</head>
+<!--  data-vide-bg="video/Time" -->
 
-            body {
-                display: flex;
-                min-height: 100vh;
-                flex-direction: column;
-            }
-
-            main {
-                flex: 1 0 auto;
-            }
-
-        </style>
-    </head>
-    <!--  data-vide-bg="video/Time" -->
-    <body class="grey lighten-1">
-        <div ng-controller="TodoListController as todoList" ng-init="getLocation()">
-             <div class="navbar-fixed">
-                <nav class="blue-grey lighten-1">
-                    <div class="nav-wrapper">
-                        <a href="#" class="center brand-logo blue-grey-text text-lighten-5">Route Selection</a>
-                    </div>
-                </nav>
-            </div>
-              <div class="hide-on-large-only hide-on-med-only">
-                <div class="row card-panel">
-                        <div class="input-field col s12 m6 l6">
-                            <select ng-model="test" ng-change="select()" width="10">
-                                <option value="" disabled selected>Choose your option</option>
-                                <option value="hospital">โรงพยาบาล</option>
-                                <option value="museum">พิพิธภัณฑ์</option>
-                                <option value="park">สวนสาธารณะ</option>
-                                <option value="police">สถานีตำรวจ</option>
-                                <option value="restaurant">ร้านอาหาร</option>
-                                <option value="store">ห้างสรรพสินค้า</option>
-                                <option value="university">มหาวิทยาลัย</option>
-                                <option value="night_club">สถานบันเทิง</option>
-                                <option value="atm">ตู้ATM</option>
-                            </select>
-                            <label>เลือกสิ่งที่ต้องการจะหา
-                            </label>
-                        </div>
-                        <div class="col s12 m6 l6">
-                            <form action="#">
-                                <p class="range-field">
-                                    <label>ระยะทาง : เมตร
-                                        {{radius}}</label>
-                                    <input type="range" id="test5" ng-model="radius" min="500" max="1000" ng-change="select()"/>
-
-                                </p>
-                            </form>
-                        </div>
-                    </div>
+<body class="grey lighten-1">
+    <div ng-controller="TodoListController as todoList" ng-init="getLocation()">
+        <div class="navbar-fixed">
+            <nav class="blue-grey lighten-1">
+                <div class="nav-wrapper">
+                    <a href="#" class="center brand-logo blue-grey-text text-lighten-5">Route Selection</a>
                 </div>
-                  <div ng-show="load">
-                    <div class="progress">
-                        <div class="indeterminate"></div>
-                    </div>
-                </div>
-                    <div ng-repeat="maps in routes">
-                    <div class="col s12 m6 l4" style="padding-left: 0px;  padding-right: 0px;">
-                        <div class="wow sliderUP" style="visibility: visible;animation-name: slideInUp;margin-left: 0px;padding-left: 0px;padding-right: 0px;margin-right: 0px;">
-                            <div class="card radius shadowDepth1">
-                                <div class="card__image border-tlr-radius">
-                                    <img height="300%" ng-src="{{maps.photos}}">
-                                </div>
-                                <div class="card__content card__padding">
-                                    <div class="test">
-                                        <a class="btn-floating btn-large waves-effect waves-light blue" href="https://www.google.co.th/maps/dir/{{location_now}}/{{maps.geometry.location.lat}},{{maps.geometry.location.lng}}/data=!3m1!4b1!4m2!4m1!3e0" target="_blank">
-                                            <i class="small material-icons">navigation</i>
-                                        </a>
-                                    </div>
-                                    <div class="card__meta">
-                                        <a href="#">ทางรถ</a>
-                                        <time>{{maps.distance.text}}</p>
-                                    </time>
-                                </div>
-                                <article class="card__article">
-                                    <h6>{{maps.name}}</h6>
-
-                                    <p>{{maps.vicinity}}</p>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-              </div>
-
+            </nav>
         </div>
+        <div class="hide-on-large-only hide-on-med-only">
+            <div class="row card-panel">
+                <div class="input-field col s12 m6 l6">
+                    <select ng-model="test" ng-change="select()" width="10">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="hospital">โรงพยาบาล</option>
+                        <option value="museum">พิพิธภัณฑ์</option>
+                        <option value="park">สวนสาธารณะ</option>
+                        <option value="police">สถานีตำรวจ</option>
+                        <option value="restaurant">ร้านอาหาร</option>
+                        <option value="store">ห้างสรรพสินค้า</option>
+                        <option value="university">มหาวิทยาลัย</option>
+                        <option value="night_club">สถานบันเทิง</option>
+                        <option value="atm">ตู้ATM</option>
+                    </select>
+                    <label>เลือกสิ่งที่ต้องการจะหา
+                    </label>
+                </div>
+                <div class="col s12 m6 l6">
+                    <form action="#">
+                        <p class="range-field">
+                            <label>ระยะทาง : เมตร {{radius}}
+                            </label>
+                            <input type="range" id="test5" ng-model="radius" min="500" max="1000" ng-change="select()" />
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div ng-show="load">
+            <div class="progress">
+                <div class="indeterminate"></div>
+            </div>
+        </div>
+        <div ng-repeat="maps in routes">
+            <div class="col s12 m6 l4" style="padding-left: 0px;  padding-right: 0px;">
+                <div class="wow sliderUP" style="visibility: visible;animation-name: slideInUp;margin-left: 0px;padding-left: 0px;padding-right: 0px;margin-right: 0px;">
+                    <div class="card radius shadowDepth1">
+                        <div class="card__image border-tlr-radius">
+                            <img height="300%" ng-src="{{maps.photos}}">
+                        </div>
+                        <div class="card__content card__padding">
+                            <div class="test">
+                                <a class="btn-floating btn-large waves-effect waves-light blue" href="https://www.google.co.th/maps/dir/{{location_now}}/{{maps.geometry.location.lat}},{{maps.geometry.location.lng}}/data=!3m1!4b1!4m2!4m1!3e0" target="_blank">
+                                    <i class="small material-icons">navigation</i>
+                                </a>
+                            </div>
+                            <div class="card__meta">
+                                <a href="#">ทางรถ</a>
+                                <time>{{maps.distance.text}}</p>
+                                </time>
+                            </div>
+                            <article class="card__article">
+                                <h6>{{maps.name}}</h6>
+                                <p>{{maps.vicinity}}</p>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
     <!-- end controller -->
-
     <script type="text/javascript">
-        $(document).ready(function() {
-            $('select').material_select();
-        });
-        $(document).ready(function() {
-            // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-            $('.modal-trigger').leanModal();
-        });
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+    $(document).ready(function() {
+        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+        $('.modal-trigger').leanModal();
+    });
     </script>
 </body>
+
 </html>

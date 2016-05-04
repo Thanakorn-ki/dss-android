@@ -53,7 +53,7 @@ angular.module('todoApp', ['ui.materialize','ionic','ngCordova'])
         lng: item.geometry.location.lng,
         location_now: $scope.location_now
       }
-      $http.get('https://maps.googleapis.com/maps/api/directions/json?origin=' + multi.location_now + '&destination=' + let.let + ',' + lng.lng + '&key=' + $scope.key + '&language=th').then(function (req) {
+      $http.get('https://maps.googleapis.com/maps/api/directions/json?origin=' + multi.location_now + '&destination=' + multi.let + ',' + multi.lng + '&key=' + $scope.key + '&language=th').then(function (req) {
         if (req.data.status === 'OK') {
           var pho
           if (!('photos' in item)) {
